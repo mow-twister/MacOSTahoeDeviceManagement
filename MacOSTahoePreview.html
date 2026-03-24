@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>macOS Tahoe</title>
+<title>macOS Tahoe Upgrade</title>
 <style>
 body {
  margin: 0;
  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
- background: url('background.jpg') no-repeat center/cover;
+ background: linear-gradient(135deg,#dfe9f3,#ffffff);
  height: 100vh;
  overflow: hidden;
 }
-/* Top Bar */
+/* Top bar */
 .topbar {
  height: 28px;
  background: rgba(255,255,255,0.6);
@@ -35,21 +35,23 @@ body {
  padding: 12px 20px;
  border-radius: 20px;
 }
-.dock img {
- width: 48px;
+.dock button {
+ background: none;
+ border: none;
  cursor: pointer;
+ font-size: 22px;
 }
 /* Window */
 .window {
  position: absolute;
- top: 80px;
+ top: 70px;
  left: 50%;
  transform: translateX(-50%);
- width: 700px;
- background: rgba(255,255,255,0.8);
- backdrop-filter: blur(30px);
+ width: 720px;
+ background: rgba(255,255,255,0.85);
+ backdrop-filter: blur(25px);
  border-radius: 16px;
- box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+ box-shadow: 0 20px 50px rgba(0,0,0,0.2);
  display: none;
 }
 .titlebar {
@@ -68,20 +70,28 @@ body {
 .content {
  padding: 20px;
 }
-/* Show window */
 .active {
  display: block;
 }
-img.screen {
- width: 100%;
- border-radius: 10px;
- margin-top: 10px;
+.info {
+ background:#e8f2ff;
+ padding:12px;
+ border-radius:10px;
+ margin-bottom:15px;
 }
+.warning {
+ background:#fff4e5;
+ padding:12px;
+ border-radius:10px;
+ margin-top:10px;
+}
+h2 { margin-top:0; }
+ul { padding-left:20px; }
 </style>
 </head>
 <body>
 <div class="topbar"> macOS Tahoe</div>
-<!-- WINDOWS -->
+<!-- OVERVIEW -->
 <div id="overview" class="window active">
 <div class="titlebar">
 <div class="dot red" onclick="closeWin('overview')"></div>
@@ -89,10 +99,14 @@ img.screen {
 <div class="dot green"></div>
 </div>
 <div class="content">
-<h2>Overview</h2>
-<p>Available in Self Service for 30 days before automatic enforcement.</p>
+<h2>macOS Tahoe Upgrade</h2>
+<div class="info">
+     Available in Self Service for <b>30 days</b>. After that, the upgrade will be automatically enforced.
+</div>
+<p>This upgrade introduces improvements to security, performance, and usability.</p>
 </div>
 </div>
+<!-- CHANGES -->
 <div id="changes" class="window">
 <div class="titlebar">
 <div class="dot red" onclick="closeWin('changes')"></div>
@@ -102,13 +116,14 @@ img.screen {
 <div class="content">
 <h2>What’s Changing</h2>
 <ul>
-<li>Updated desktop experience</li>
-<li>New System Settings layout</li>
-<li>Improved performance</li>
+<li>Updated desktop and window design</li>
+<li>Redesigned System Settings</li>
+<li>Improved performance and stability</li>
+<li>Enhanced security and compliance controls</li>
 </ul>
-<img src="images/desktop.png" class="screen">
 </div>
 </div>
+<!-- APPS -->
 <div id="apps" class="window">
 <div class="titlebar">
 <div class="dot red" onclick="closeWin('apps')"></div>
@@ -117,10 +132,22 @@ img.screen {
 </div>
 <div class="content">
 <h2>Application Changes</h2>
-<p><b>Restricted:</b> Messages, FaceTime, Mail</p>
-<p><b>Use:</b> Outlook and Teams</p>
+<div class="warning">
+     Restricted applications:
+<ul>
+<li>Messages</li>
+<li>FaceTime</li>
+<li>Mail</li>
+</ul>
+</div>
+<p><b>Use instead:</b></p>
+<ul>
+<li>Microsoft Outlook</li>
+<li>Microsoft Teams</li>
+</ul>
 </div>
 </div>
+<!-- UPGRADE -->
 <div id="upgrade" class="window">
 <div class="titlebar">
 <div class="dot red" onclick="closeWin('upgrade')"></div>
@@ -132,15 +159,23 @@ img.screen {
 <ul>
 <li>30–60 minutes</li>
 <li>Multiple restarts</li>
+<li>Device unavailable during upgrade</li>
+</ul>
+<h3>Before You Upgrade</h3>
+<ul>
+<li>Save your work</li>
+<li>Connect to power</li>
+<li>Ensure internet connection</li>
+<li>Close all applications</li>
 </ul>
 </div>
 </div>
 <!-- DOCK -->
 <div class="dock">
-<img src="images/finder.png" onclick="openWin('overview')">
-<img src="images/settings.png" onclick="openWin('changes')">
-<img src="images/outlook.png" onclick="openWin('apps')">
-<img src="images/teams.png" onclick="openWin('upgrade')">
+<button onclick="openWin('overview')">🖥️</button>
+<button onclick="openWin('changes')">⚙️</button>
+<button onclick="openWin('apps')">💬</button>
+<button onclick="openWin('upgrade')">⬆️</button>
 </div>
 <script>
 function openWin(id){
