@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>macOS Tahoe</title>
+<style>
+body {
+ margin: 0;
+ font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+ background: url('background.jpg') no-repeat center/cover;
+ height: 100vh;
+ overflow: hidden;
+}
+/* Top Bar */
+.topbar {
+ height: 28px;
+ background: rgba(255,255,255,0.6);
+ backdrop-filter: blur(20px);
+ display: flex;
+ align-items: center;
+ padding: 0 12px;
+ font-size: 13px;
+}
+/* Dock */
+.dock {
+ position: fixed;
+ bottom: 20px;
+ left: 50%;
+ transform: translateX(-50%);
+ display: flex;
+ gap: 14px;
+ background: rgba(255,255,255,0.4);
+ backdrop-filter: blur(20px);
+ padding: 12px 20px;
+ border-radius: 20px;
+}
+.dock img {
+ width: 48px;
+ cursor: pointer;
+}
+/* Window */
+.window {
+ position: absolute;
+ top: 80px;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 700px;
+ background: rgba(255,255,255,0.8);
+ backdrop-filter: blur(30px);
+ border-radius: 16px;
+ box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+ display: none;
+}
+.titlebar {
+ padding: 10px;
+ display: flex;
+ gap: 8px;
+}
+.dot {
+ width: 12px;
+ height: 12px;
+ border-radius: 50%;
+}
+.red { background:#ff5f57;}
+.yellow { background:#febc2e;}
+.green { background:#28c840;}
+.content {
+ padding: 20px;
+}
+/* Show window */
+.active {
+ display: block;
+}
+img.screen {
+ width: 100%;
+ border-radius: 10px;
+ margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="topbar"> macOS Tahoe</div>
+<!-- WINDOWS -->
+<div id="overview" class="window active">
+<div class="titlebar">
+<div class="dot red" onclick="closeWin('overview')"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+<div class="content">
+<h2>Overview</h2>
+<p>Available in Self Service for 30 days before automatic enforcement.</p>
+</div>
+</div>
+<div id="changes" class="window">
+<div class="titlebar">
+<div class="dot red" onclick="closeWin('changes')"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+<div class="content">
+<h2>What’s Changing</h2>
+<ul>
+<li>Updated desktop experience</li>
+<li>New System Settings layout</li>
+<li>Improved performance</li>
+</ul>
+<img src="images/desktop.png" class="screen">
+</div>
+</div>
+<div id="apps" class="window">
+<div class="titlebar">
+<div class="dot red" onclick="closeWin('apps')"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+<div class="content">
+<h2>Application Changes</h2>
+<p><b>Restricted:</b> Messages, FaceTime, Mail</p>
+<p><b>Use:</b> Outlook and Teams</p>
+</div>
+</div>
+<div id="upgrade" class="window">
+<div class="titlebar">
+<div class="dot red" onclick="closeWin('upgrade')"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+<div class="content">
+<h2>Upgrade Process</h2>
+<ul>
+<li>30–60 minutes</li>
+<li>Multiple restarts</li>
+</ul>
+</div>
+</div>
+<!-- DOCK -->
+<div class="dock">
+<img src="images/finder.png" onclick="openWin('overview')">
+<img src="images/settings.png" onclick="openWin('changes')">
+<img src="images/outlook.png" onclick="openWin('apps')">
+<img src="images/teams.png" onclick="openWin('upgrade')">
+</div>
+<script>
+function openWin(id){
+ document.querySelectorAll('.window').forEach(w => w.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+function closeWin(id){
+ document.getElementById(id).classList.remove('active');
+}
+</script>
+</body>
+</html>
